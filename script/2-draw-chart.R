@@ -6,36 +6,31 @@ clean_data <- read_csv2("./data/raw_data.csv") %>%
   filter(negara == "Indonesia" & jumlah > 0) %>%
   mutate(hari = lubridate::day(tanggal))
 
-
-# PR: cari trend yang sesuai untuk data Indonesia
 trend <- nls(jumlah ~ a * (1 + r)^(hari),
   data = subset(clean_data, hari < 29),
-  start = list(a = 1, r = .01)
-)
+  start = list(a = 1, r = .01))
 
 besok <- data.frame(hari = 29:41)
 
 prediksi <- data.frame(
   tanggal = c(as.Date("2020-03-29"):as.Date("2020-04-10")) %>% as.Date(origin = as.Date("1970-01-01")),
-  jumlah = predict(trend, newdata = besok)
-)
+  jumlah = predict(trend, newdata = besok))
 
-# plot data
 ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
-  geom_text(
-    data = prediksi, 
-    mapping = aes(
-      x = tanggal, y = jumlah,
-      label = formatC(jumlah, big.mark = ".", decimal.mark = ",", 
-        format = "f", digits = 0)),
-    hjust = 1.2,
-    color = "gray50") +
+#  geom_text(
+#    data = prediksi, 
+#    mapping = aes(
+#      x = tanggal, y = jumlah,
+#      label = formatC(jumlah, big.mark = ".", decimal.mark = ",", 
+#        format = "f", digits = 0)),
+#    hjust = 1.2,
+#    color = "gray50") +
   geom_smooth(
-    data = filter(clean_data, tanggal >= as.Date("2020-03-23")), 
+    data = filter(clean_data, tanggal >= as.Date("2020-03-20")), 
     aes(color = "gray75"), 
     method = "lm", 
     size = .5, fullrange = T, se = F, linetype = "dashed") +
-  geom_line(color = "firebrick", lwd = 1.2) +
+  geom_line(aes(color = "firebrick"), lwd = 1.2) +
   geom_point(data = prediksi, pch = 4) +
   geom_text(
     data = slice(clean_data, which.max(tanggal)),
@@ -46,17 +41,17 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     hjust = -.5, color = "firebrick") +
   labs(
     title = "Kecenderungan infeksi COVID-19 di Indonesia", 
-    color = "Jumlah terinfeksi", 
+    color = "Keterangan grafik", 
     caption = paste("Sumber data: Johns Hopkins per", 
-      max(clean_data$tanggal) %>% format(format = "%d-%m-%Y"))) +
+      max(clean_data$tanggal) %>% format(format = "%d %b %Y"))) +
   scale_x_date(
     date_breaks = "1 day", 
     minor_breaks = NULL, 
-    labels = scales::date_format(format = "%d-%m"), 
-    limits = as.Date(c("2020-03-10", "2020-04-14"))) +
+    labels = scales::date_format(format = "%d/%m"), 
+    limits = as.Date(c("2020-03-10", "2020-04-11"))) +
   scale_y_log10(labels = scales::number_format()) +
   scale_color_identity(
-    labels = c("fakta", "tren dari 20-03-2020"), 
+    labels = c("jumlah kasus", "tren sejak 20-Mar-2020"), 
     guide = guide_legend(title.position = "top", title.hjust = 0.5)) +
   theme_linedraw() +
   theme(
@@ -66,5 +61,5 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     plot.caption = element_text(color = "gray25"),
     legend.position = "bottom")
 
-ggsave("./img/gambar.pdf", dpi = 150, units = "cm", width = 25, height = 20)
-ggsave("./img/gambar.png", dpi = 150, units = "cm", width = 25, height = 20)
+ggsave("./img/gambar.pdf", dpi = 300, units = "cm", width = 25, height = 15)
+ggsave("./img/gambar.png", dpi = 300, units = "cm", width = 25, height = 15)
