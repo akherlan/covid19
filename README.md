@@ -1,16 +1,18 @@
 # Koronavirus
 
-Grafické zobrazení vývoje nového ḱoronaviru COVID-19, ze zvláštním zřetelem na Českou republiku. Skutečnost je průběžně aktualizovaná, model odpovídá trendu as of 20. března 2020 - bude zajímavé sledovat, jestli držíme exponenciálu (vyhrává virus) nebo křivku snižujeme (vyhráváme my).
+_Repositori ini merupakan hasil klon dari_ [_analisis koronavirus Ceko_](https://github.com/jlacko/koronavirus) _. Dimodifikasi, disesuaikan, dan dimutahirkan menggunakan data penyebaran koronavirus Indonesia dari berbagai sumber._
 
-Zdrojem dat je známá databáze od John Hopkins univerzity, k dispozici zde na GitHubu:  https://github.com/CSSEGISandData/COVID-19
+Representasi grafis dari pengembangan onoronavir baru COVID-19, dengan perhatian khusus ke Republik Ceko. Faktanya terus diperbarui, model sesuai dengan tren pada 20 Maret 2020 - akan menarik untuk melihat apakah kita memegang eksponensial (virus menang) atau mengurangi kurva (kita menang).
+
+Sumber data adalah database terkenal dari Universitas John Hopkins, tersedia di GitHub: https://github.com/CSSEGISandData/COVID-19
 
 <p align="center">
   <img src="http://jla-unsecure.s3-website.eu-central-1.amazonaws.com/koronavirus/obrazek.png" alt="trendline"/>
 </p>
 
-Aktuální trend se dost blíží ideální exponenciále, s vyhlídkou 10 tisíc případů před koncem března.
+Tren saat ini cukup dekat dengan eksponensial ideal, dengan prospek 10 ribu kasus sebelum akhir Maret.
 
-Pro srovnání trend čtyř zemí ve světě; je vidět jak se exponenciálu podařilo zastavit v Číně a Koreji, zpomalit v Japonsku ale v Itálii stále drží trend.
+Sebagai perbandingan, tren empat negara di dunia; Anda dapat melihat bagaimana eksponensial berhenti di Cina dan Korea, melambat di Jepang tetapi tetap mempertahankan tren di Italia.
 
 <p align="center">
   <img src="http://jla-unsecure.s3-website.eu-central-1.amazonaws.com/koronavirus/cizina.png" alt="cizina"/>
