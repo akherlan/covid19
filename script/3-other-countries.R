@@ -89,4 +89,4 @@ ggplot(data = clean_data, aes(x = hari, y = jumlah, color = negara, alpha = nega
     plot.caption = element_text(color = "gray25")
   )
 
-ggsave("./img/foreign.png", dpi = 300, units = "cm", width = 30, height = 15)
+ggsave("./img/foreign.png", dpi = 300, units = "cm", width = 30, height = 18)
