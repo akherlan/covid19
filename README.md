@@ -18,4 +18,4 @@ Sebagai perbandingan diberikan pula tren dari negara lain di dunia. Kita dapat m
   <img src="./img/foreign.png" alt="foreign"/>
 </p>
 
-_Dimutakhirkan pada 29 Maret 2020_
+_Dimutakhirkan pada 30 Maret 2020_
