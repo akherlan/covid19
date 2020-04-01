@@ -4,7 +4,7 @@ _Repositori ini merupakan hasil klon dari_ [_analisis koronavirus di Ceko_](http
 
 Representasi grafis dari kasus penyebaran koronavirus baru (nCoV-19) di Indonesia. Sumber data dari basis data yang terkenal di dunia saat ini yaitu Universitas John Hopkins, tersedia di GitHub: https://github.com/CSSEGISandData/COVID-19
 
-Fakta jumlah kasus sesuai dengan data yang dilaporkan per 28 Maret 2020. Model sesuai dengan tren pada 20 Maret 2020, yang hingga 28 Maret 2020 memperlihatkan hubungan yang selaras dengan keadaan di lapangan.
+Fakta jumlah kasus sesuai dengan data yang dilaporkan per 28 Maret 2020. Model sesuai dengan tren sejak 20 Maret 2020, yang hingga 31 Maret 2020 memperlihatkan selisih (menurun) dibanding tren.
 
 <p align="center">
   <img src="./img/image.png" alt="trendline"/>
@@ -18,4 +18,4 @@ Sebagai perbandingan diberikan pula tren dari negara lain di dunia. Kita dapat m
   <img src="./img/foreign.png" alt="foreign"/>
 </p>
 
-_Dimutakhirkan pada 30 Maret 2020_
+_Dimutakhirkan pada 1 April 2020_
