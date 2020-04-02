@@ -6,8 +6,9 @@ clean_data <- read_csv2("./data/raw_data.csv") %>%
   filter(negara == "Indonesia" & jumlah > 0) %>%
   mutate(hari = lubridate::day(tanggal))
 
+# berapa seharusnya nilai a dan r yang tepat?
 trend <- nls(jumlah ~ a * (1 + r)^(hari),
-  data = subset(clean_data, hari < 29),
+  data = subset(clean_data, hari < 26),
   start = list(a = 1, r = .01))
 
 besok <- data.frame(hari = 26:36)
@@ -27,7 +28,7 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     hjust = 1.3,
     color = "gray50") +
   geom_smooth(
-    data = filter(clean_data, tanggal >= as.Date("2020-03-20")), 
+    data = filter(clean_data, tanggal >= as.Date("2020-03-25")), 
     aes(color = "gray50"), 
     method = "lm", 
     size = .4, fullrange = T, se = F, linetype = "dashed") +
@@ -42,6 +43,7 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     hjust = -.5, color = "firebrick", size = 4) +
   labs(
     title = "Kecenderungan infeksi COVID-19 di Indonesia", 
+    subtitle = "Prediksi * * * sejak 26 Maret 2020 ",
     caption = paste("Sumber data: Johns Hopkins per", 
       max(clean_data$tanggal) %>% format(format = "%d %b %Y"))) +
   scale_x_date(
@@ -51,7 +53,7 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     limits = as.Date(c("2020-03-10", "2020-04-06"))) +
   scale_y_log10(labels = scales::number_format()) +
   scale_color_identity(
-    labels = c("jumlah kasus", "tren sejak 20 Mar 2020"), 
+    labels = c("jumlah kasus", "tren dalam satu pekan terakhir (sejak 25 Mar 2020)"), 
     guide = guide_legend(title.position = "bottom", title.hjust = 0.5)) +
   theme_linedraw() +
   theme(
@@ -62,5 +64,5 @@ ggplot(data = clean_data, aes(x = tanggal, y = jumlah)) +
     legend.title = element_blank(),
     legend.position = "bottom")
 
-ggsave("./img/image.pdf", dpi = 300, units = "cm", width = 25, height = 18)
-ggsave("./img/image.png", dpi = 300, units = "cm", width = 25, height = 18)
+ggsave("./img/image.pdf", dpi = 300, units = "cm", width = 25, height = 20)
+ggsave("./img/image.png", dpi = 300, units = "cm", width = 25, height = 20)

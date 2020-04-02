@@ -1,3 +1,0 @@
-Zdroj dat: https://github.com/CSSEGISandData/COVID-19
-podmínky použití = viz. odkaz
-
